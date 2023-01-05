@@ -89,7 +89,7 @@ namespace TokenJWT.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            if (model.UserName == "Abid" && model.Password == "123")
+            if (model.UserName == "Abid" && model.Password == "1234")
             {
                 var authClaims = new List<Claim>
                 {
@@ -101,7 +101,7 @@ namespace TokenJWT.Controllers
                 var token = new JwtSecurityToken(
                     issuer: _configuration["JWT:ValidIssuer"],
                     audience: _configuration["JWT:ValidAudience"],
-                    expires: DateTime.Now.AddHours(5),
+                    expires: DateTime.Now.AddSeconds(20),
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );

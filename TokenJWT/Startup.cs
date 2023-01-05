@@ -60,7 +60,9 @@ namespace TokenJWT
                     ValidateAudience=true,
                     ValidAudience=Configuration["JWT:ValidAudience"],
                     ValidIssuer=Configuration["JWT:ValidIssuer"],
-                    IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
+                    IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"])),
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
                 };
             });
 
